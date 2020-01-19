@@ -1,0 +1,299 @@
+@keyframes superFadeIn {
+  0%  {opacity:0;}
+  75% {opacity:0;}
+  100%{opacity:1;}
+}
+.smm-information {
+  width: 100%;
+  max-width: 500px;
+}
+.smm-information .box {
+  max-width: 400px;
+  background: lightblue;
+  box-sizing: border-box;
+  padding: 10px 20px;
+}
+.smm-information .smm-header .smm-row {
+  display: flex;
+  justify-content: space-between;
+}
+.smm-information .owner {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  object-position: bottom;
+  border-radius: 100%;
+}
+.smm-settings-bar {
+  display: flex;
+  justify-content: flex-end;
+  background: white;
+  padding: 10px 10px;
+  margin-bottom: 20px;
+}
+.smm-settings-bar .submit {
+  margin: 0px;
+  padding: 0 !important;
+}
+.btn-default {
+  all: unset;
+  background: lightgrey !important;
+  border-radius: 0px !important;
+  font-size: 18px !important;
+  padding-left:  10px;
+  padding-right: 10px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.smm-settings-bar #submit {
+  background: green !important;
+  border-radius: 0px !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+}
+.smm-main-title {
+  margin-bottom: 20px !important;
+}
+.smm-main-options .form-table {
+  width: 100% !important;
+}
+.smm-main-options .form-table tr {
+  width: 100% !important;
+}
+.smm-main-options .form-table th {
+  width: 200px !important;
+}
+.smm-main-options .form-table td {
+  width: 300px !important;
+}
+#template-section th, #top-menu-bar-section th, #mobile-menu-container-section th {
+  width: 20%;
+}
+#template-section td, #top-menu-bar-section td, #mobile-menu-container-section td {
+  width: 80% !important;
+}
+.smm-container .section.active {
+  animation: superFadeIn 0.3s linear forwards;
+}
+.smm-container .smm-social-icons .conditional-wrapper {
+  position: relative;
+  top: 30px;
+  margin-left: -220px;
+}
+.smm-print-options {
+  position: fixed;
+  top:30px;
+  right:0;
+  height: 600px;
+  width: 425px;
+  overflow-y: scroll;
+}
+.smm-row {
+  display: flex;
+}
+.smm-row .smm-information {
+  width: 50%;
+  box-sizing: border-box;
+}
+.smm-row .smm-sidebar {
+  max-width: 250px;
+  width: 100%;
+}
+.smm-row .smm-sidebar li.active {
+  background: #f57f00 !important;
+}
+.smm-row .smm-sidebar ul {
+  margin: 0px;
+}
+.smm-row .smm-main-options {
+  width: 50%;
+  margin: 0 20px;
+  box-sizing: border-box;
+}
+.smm-image-remove {
+	background: red;
+}
+.smm-main-options tbody.active {
+  display: block;
+}
+.smm-main-options tbody {
+  display: none;
+}
+.smm-tab {
+  padding: 10px 20px;
+  color: white;
+  background: black;
+  margin: 0px;
+  border-bottom: 1px solid #985b00;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 16px;
+}
+.smm-tab:hover {
+  background: #985b00;
+}
+button {
+	cursor: pointer;
+}
+.smm-main-options select {
+  line-height: 25px !important;
+}
+.icons-selector {
+  background: white;
+  border: 1px solid darkgrey;
+  border-radius: 4px;
+}
+.icons-selector i  {
+	font-family: 'fontAwesome';
+  line-height: 28px !important;
+}
+.icons-selector .selector {
+  height: 28px !important;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.switch.active input + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.switch.active input + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+.hide {
+  display: none;
+}
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+.loading {
+  opacity: 0;
+}
+.loading.loaded {
+  animation: superFadeIn 0.5s linear forwards;
+}
+.smm-image-picker {
+  all: unset;
+  padding: 8px 10px;
+  background: #0073aa;
+  color: white;
+  cursor: pointer;
+}
+.smm-image-remove {
+  all: unset;
+  padding: 8px 10px;
+  background: red;
+  color: white;
+  cursor: pointer;
+}
+.smm-options-box {
+  padding: 10px 20px 30px 20px;
+  background: white;
+}
+body::-webkit-scrollbar {
+  display: none !important;
+}
+body {
+  -ms-overflow-style: none !important;
+}
+.smm-option-wrapper .smm-radioimage-wrapper {
+ display: flex;
+ flex-wrap: wrap;
+}
+.smm-option-wrapper .smm-radioimage-wrapper .title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smm-option-wrapper .smm-radioimage-wrapper > div {
+  width: 130px;
+  height: 130px;
+  box-sizing: border-box;
+  border: 2px solid lightgrey;
+  overflow-y: hidden;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.smm-option-wrapper .smm-radioimage-wrapper .active {
+  border: 2px solid #0073aa !important;
+}
+.smm-option-wrapper .smm-radioimage-wrapper > div img {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+}
+@media screen and (max-width: 1440px) {
+  .smm-row .smm-sidebar {
+    margin: 0px;
+  }
+  .smm-container .smm-social-icons .conditional-wrapper  {
+    margin-left: -200px;
+  }
+  .smm-row .smm-information {
+    margin: 0px !important;
+    width: 35%;
+  }
+  .smm-row .smm-main-options {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 65%;
+  }
+  .smm-settings-bar {
+    margin-bottom: 10px;
+  }
+}
