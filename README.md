@@ -1,2 +1,2 @@
 # super-mobile-menu
-it's a super mobile menu to wordpress
+it's a wordpress plugin which creates a super mobile menu.
