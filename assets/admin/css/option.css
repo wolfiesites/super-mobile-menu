@@ -119,6 +119,23 @@
 .smm-main-options tbody {
   display: none;
 }
+.smm-main-options .icon-row {
+ display: flex;
+}
+.smm-main-options .icon-row .actions {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.smm-main-options .icon-row .actions i  {
+  margin-right: 5px;
+  cursor: pointer;
+}
+.smm-main-options .input-wrappers {
+  display: flex;
+  width: 100%;
+}
 .smm-tab {
   padding: 10px 20px;
   color: white;
