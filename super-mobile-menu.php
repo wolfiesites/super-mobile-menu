@@ -24,6 +24,7 @@ Class Super_mobile_menu {
 	public function __construct(){
 		// add_action('wp_enqueue_scripts', [ $this, 'super_mobile_enqueue_scripts'] );
 		add_action('admin_enqueue_scripts', [ $this, 'smm_admin_enqueue_scripts'] );
+		add_action('wp_enqueue_scripts', [ $this, 'smm_front_enqueue_scripts'] );
 		add_action ('admin_menu', [ $this, 'smm_add_menu_pages' ]);
 		add_action('wp_footer', [ $this, 'smm_add_menu' ]);
 	}
@@ -46,6 +47,11 @@ Class Super_mobile_menu {
 			'fontAwesomeArray' => json_encode(smm_get_font_icons()),
 		) );
 	}
+
+	public function smm_front_enqueue_scripts() {
+		wp_enqueue_style(PLUGIN_PREFIX . '-hamburger-css', plugin_dir_url(__FILE__) . '/assets/admin/css/hamburgers.min.css' );
+	}
+
 	public function smm_add_menu_pages(){
 		$capability = 'manage_options';
 		$icon = 'dashicons-menu';
