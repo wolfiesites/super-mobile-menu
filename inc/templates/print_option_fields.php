@@ -10,6 +10,7 @@
 			<?php 
 			$first_section = true;
 			$option_fields = '';
+			$index = 0;
 			foreach ($SMMSUPEROPTIONS as $superoption ) {
 				ob_start();
 				//add field types
@@ -31,6 +32,7 @@
 					ob_start();
 					$option_fields = ob_get_clean();
 				}
+				$index++;
 			}
 			echo $option_fields;
 			?>

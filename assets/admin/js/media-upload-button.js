@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
 /*
 	 * Select/Upload image(s) event
 	 */
-	$('body').on('click', '.smm-image-picker', function(e){
+	$('.smm-image-picker').on('click', function(e){
 		e.preventDefault();
  
     		var button = $(this),
@@ -38,7 +38,7 @@ jQuery(document).ready(function($){
 	/*
 	 * Remove image event
 	 */
-	$('body').on('click', '.smm-image-remove', function(){
+	$('.smm-image-remove').on('click', function(){
 		$(this).hide().parent().find('input').val('');
 		$(this).parent().find('img').remove();
 		return false;

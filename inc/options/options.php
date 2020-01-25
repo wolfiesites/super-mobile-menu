@@ -5,37 +5,37 @@ $hamburgersArray = smm_get_hamburgers();
 $SMMSUPEROPTIONS = [
 	[
 		'type' => 'select',
-		'name' => 'super_mobile_settings[menu]',
+		'name' => 'super_mobile_settings[general-menu]',
 		'label' => 'Choose a menu',
 		'options' => $speroMenusRdy,
 	],
 	[
 		'type' => 'image',
-		'name' => 'super_mobile_settings[logo]',
+		'name' => 'super_mobile_settings[general-logo]',
 		'label' => 'Choose your logo',
 		'default' => SMM_PLUGIN_URL . '/assets/img/pawel-witek.jpg',
 	],
 	[
 		'type' => 'color',
 		'label' => 'Choose color for menu bar',
-		'name' => 'super_mobile_settings[menu-bar-color]',
+		'name' => 'super_mobile_settings[general-menu-bar-color]',
 		'default' => '#fff',
 	],
 	[
 		'type' => 'color',
 		'label' => 'Choose color for menu container',
-		'name' => 'super_mobile_settings[menu-container-color]',
+		'name' => 'super_mobile_settings[general-menu-container-color]',
 		'default' => '#fff',
 	],
 	[
 		'type' => 'color',
 		'label' => 'Choose color for Mobile menu overlay',
-		'name' => 'super_mobile_settings[overlay-color]',
+		'name' => 'super_mobile_settings[general-overlay-color]',
 		'default' => '#000',
 	],
 	[
 		'type' => 'iconpicker',
-		'name' => 'super_mobile_settings[icon]',
+		'name' => 'super_mobile_settings[general-icon-parent]',
 		'label' => 'Choose icon for parent element of mobile menu',
 		'default' => 'fa-arrow-right',
 	],
@@ -53,7 +53,7 @@ $SMMSUPEROPTIONS = [
 	],
 	[
 		'type' => 'image',
-		'name' => 'super_mobile_settings[stickylogo]',
+		'name' => 'super_mobile_settings[sticky-logo]',
 		'label' => 'Choose your sticky logo',
 		'default' => SMM_PLUGIN_URL . 'assets/img/pawel-witek.jpg',
 	],
@@ -186,7 +186,7 @@ $SMMSUPEROPTIONS = [
 	],
 	[
 		'type' => 'radioimage',
-		'name' => 'super_mobile_settings[layout]',
+		'name' => 'super_mobile_settings[mainbar-layout]',
 		'label' => 'Choose your Main menu bar layout',
 		'value' => 'on',
 		'options' => [
@@ -222,15 +222,54 @@ $SMMSUPEROPTIONS = [
 		'id' => 'template-section',
 	],
 	[
+		'type' => 'checkbox',
+		'name' => 'super_mobile_settings[container-language]',
+		'label' => 'Display language switcher?',
+		'value' => 'on',
+		'default' => 'on',
+	],
+	[
+		'type' => 'radioimage',
+		'name' => 'super_mobile_settings[container-layout]',
+		'label' => 'Choose your Main menu bar layout',
+		'value' => 'on',
+		'options' => [
+			[
+				'label' => 'layout 1',
+				'image' => SMM_PLUGIN_URL . 'assets/img/layouts/logo-hamb.svg',
+			],
+			[
+				'label' => 'layout 2',
+				'image' => SMM_PLUGIN_URL . 'assets/img/layouts/hamb-logo.svg',
+			],
+			[
+				'label' => 'layout 3',
+				'image' => SMM_PLUGIN_URL . 'assets/img/layouts/hamb-logo-search.svg',
+			],
+			[
+				'label' => 'layout 4',
+				'image' => SMM_PLUGIN_URL . 'assets/img/layouts/hamb-search-logo.svg',
+			],
+			[
+				'label' => 'layout 5',
+				'image' => SMM_PLUGIN_URL . 'assets/img/layouts/logo-search-hamb.svg',
+			],
+			[
+				'label' => 'layout 6',
+				'image' => SMM_PLUGIN_URL . 'assets/img/layouts/logo-lang-hamb.svg',
+			],
+		]
+	],
+	[
 		'type' => 'text',
-		'name' => 'super_mobile_settings[opis]',
+		'name' => 'super_mobile_settings[container-desc]',
 		'value' => 'witek jest niesamowity',
 		'label' => 'Description in mobile container',
 		'default' => 'witek jest super',
 	],
 	[
 		'type' => 'content',
-		'name' => 'super_mobile_settings[content-container]',
+		'name' => 'super_mobile_settings[container-content]',
 		'label' => 'add text with shortcodes to mobile container',
 		'default' => ' ',
 	],
@@ -240,28 +279,29 @@ $SMMSUPEROPTIONS = [
 		'id' => 'mobile-menu-container-section',
 	],
 	[
-		'type' => 'section',
-		'label' => 'Hamburger',
-		'id' => 'hamburger-section',
-	],
-	[
 		'type' => 'select',
-		'name' => 'super_mobile_settings[animationswitcher]',
+		'name' => 'super_mobile_settings[hamburger]',
 		'label' => 'Choose animation switcher',
 		'options' => $hamburgersArray,
 		'default' => 'hamburger--3dx',
 	],
 	[
 		'type' => 'section',
-		'label' => 'Choose Animations',
-		'id' => 'animations-section',
+		'label' => 'Hamburger',
+		'id' => 'hamburger-section',
 	],
 	[
-		'type' => 'social',
-		'name' => 'super_mobile_settings[social]',
-		'label' => 'Apply social media in mobile container?',
-		'options' => ['facebook','instagram','linkedin','youtube'],
-		'default' => 'off',
+		'type' => 'checkbox',
+		'name' => 'super_mobile_settings[social-on]',
+		'label' => 'Enable social icons?',
+		'value' => 'on',
+		'default' => 'on',
+	],
+	[
+		'type' => 'iconrepeater',
+		'name' => 'super_mobile_settings[social-icons]',
+		'label' => 'Choose your icons',
+		'option' => 'social',
 	],
 	[
 		'type' => 'section',
@@ -270,7 +310,12 @@ $SMMSUPEROPTIONS = [
 	],
 	[
 		'type' => 'iconrepeater',
-		'name' => 'super_mobile_settings[icon-left]',
+		'name' => 'super_mobile_settings[icons-left]',
+		'label' => 'Choose your icons',
+	],
+	[
+		'type' => 'iconrepeater',
+		'name' => 'super_mobile_settings[icons-right]',
 		'label' => 'Choose your icons',
 	],
 	[
@@ -281,20 +326,39 @@ $SMMSUPEROPTIONS = [
 	[
 		'type' => 'color',
 		'label' => 'Choose background color for active item',
-		'name' => 'super_mobile_settings[bg-active-color]',
+		'name' => 'super_mobile_settings[typography-bg-active-color]',
 		'default' => '#000',
 	],
 	[
 		'type' => 'color',
 		'label' => 'Choose font color',
-		'name' => 'super_mobile_settings[font-color]',
+		'name' => 'super_mobile_settings[typography-font-color]',
 		'default' => '#000',
 	],
 	[
 		'type' => 'color',
 		'label' => 'Choose active item font color',
-		'name' => 'super_mobile_settings[active-font-color]',
+		'name' => 'super_mobile_settings[typography-active-font-color]',
 		'default' => '#fff',
+	],
+	[
+		'type' => 'fontpicker',
+		'label' => 'Choose font type for your mobile menu!',
+		'name' => 'super_mobile_settings[typography-fonttype]',
+		'default' => 'Calibri',
+	],
+	[
+		'type' => 'fontpicker',
+		'label' => 'Choose font type for your title!',
+		'name' => 'super_mobile_settings[typography-fonttype-title]',
+		'default' => 'Calibri',
+	],
+	[
+		'type' => 'text',
+		'name' => 'super_mobile_settings[typography-fontsize-menu-itmes]',
+		'value' => 'witek jest niesamowity',
+		'label' => 'set font size for menu items<br><small>value is in px</small>',
+		'default' => '18',
 	],
 	[
 		'type' => 'section',
@@ -314,22 +378,15 @@ $SMMSUPEROPTIONS = [
 		'id' => 'hide-menu-section',
 	],
 	[
+		'type' => 'text',
+		'label' => 'Write in pixels from when to show mobile menu?<br><small>ex.: 768</small>',
+		'name' => 'super_mobile_settings[breakpoint]',
+	],
+	[
 		'type' => 'section',
 		'label' => 'Responsive',
 		'id' => 'responsive-section',
 	],
-	// [
-	// 	'type' => 'radio',
-	// 	'name' => 'super_mobile_settings[cokolwiek]',
-	// 	'label' => 'what do you like the most?',
-	// 	'options' => ['ciocia agata','oranges','bananas'],
-	// 	'default' => '0',
-	// ],
-	// [
-	// 	'type' => 'section',
-	// 	'label' => 'Unused custom fields',
-	// 	'id' => 'custom-fields-section',
-	// ],
 	[
 		'type' => 'section',
 		'label' => 'Import Template',

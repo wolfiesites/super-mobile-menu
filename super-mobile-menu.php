@@ -25,7 +25,7 @@ Class Super_mobile_menu {
 		// add_action('wp_enqueue_scripts', [ $this, 'super_mobile_enqueue_scripts'] );
 		add_action('admin_enqueue_scripts', [ $this, 'smm_admin_enqueue_scripts'] );
 		add_action ('admin_menu', [ $this, 'smm_add_menu_pages' ]);
-		add_action('wp_body_open', [ $this, 'smm_add_menu' ]);
+		add_action('wp_footer', [ $this, 'smm_add_menu' ]);
 	}
 	public function smm_admin_enqueue_scripts() {
 		wp_enqueue_script(PLUGIN_PREFIX . '-image-picker', plugin_dir_url(__FILE__) . '/assets/admin/js/media-upload-button.js', array(), false, true );
@@ -33,6 +33,9 @@ Class Super_mobile_menu {
 		wp_register_script(PLUGIN_PREFIX . '-tabs-js', plugin_dir_url(__FILE__) . '/assets/admin/js/tabs.js', array('jquery'), false, true );
 		wp_register_script(PLUGIN_PREFIX . '-helpers-js', plugin_dir_url(__FILE__) . '/assets/admin/js/helpers.js', array('jquery'), false, false );
 		wp_register_script(PLUGIN_PREFIX . '-switcher-js', plugin_dir_url(__FILE__) . '/assets/admin/js/switcher.js', array('jquery'), false, true );
+		wp_register_script(PLUGIN_PREFIX . '-iconrepeater-js', plugin_dir_url(__FILE__) . '/assets/admin/js/iconrepeater.js', array('jquery'), false, true );
+		wp_register_script(PLUGIN_PREFIX . '-fontpicker-js', plugin_dir_url(__FILE__) . '/assets/admin/js/FontPicker.js', array('jquery'), false, true );
+		wp_register_script(PLUGIN_PREFIX . '-fontpicker-settings-js', plugin_dir_url(__FILE__) . '/assets/admin/js/fontpicker-settings.js', array('jquery', PLUGIN_PREFIX . '-fontpicker-js'), false, true );
 		wp_register_style(PLUGIN_PREFIX . '-options-css', plugin_dir_url(__FILE__) . '/assets/admin/css/option.css' );
 		wp_register_style(PLUGIN_PREFIX . '-iconpicker-css', plugin_dir_url(__FILE__) . '/assets/admin/css/jquery.fonticonpicker.min.css' );
 		//localize scripts
@@ -65,8 +68,8 @@ Class Super_mobile_menu {
 		}
 	}
 //add template on front-end
-	public function smm_add_menu(){
-
+	public function smm_add_menu(){ 
+		include(plugin_dir_path( __FILE__ ) . '/inc/templates/front/mobile_menu.php');
 	}	
 }
 new Super_mobile_menu;
