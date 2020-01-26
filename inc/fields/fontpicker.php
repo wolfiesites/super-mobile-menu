@@ -1,5 +1,7 @@
 <?php
 if($superoption['type'] == 'fontpicker') {
+	$smm_options = get_option('super_mobile_settings', false);
+	$googleApiKey = $smm_options['google-api'];
 	echo '<tr valign="top">';
 	echo '<th scope="row">' . $superoption['label'] . '</th>';
 	echo '<td>';
@@ -20,7 +22,7 @@ if($superoption['type'] == 'fontpicker') {
 			var t = this;
 			var activeFont;
 			var fontObject = '<?php echo $super_mobile_menu_settings[$just_name] ?>';
-			var googleApiKey;
+			var googleApiKey = '<?php echo $googleApiKey ?>';
 			if(fontObject.length > 0 ){
 				fontObject = JSON.parse(fontObject);
 			}

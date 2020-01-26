@@ -311,12 +311,12 @@ $SMMSUPEROPTIONS = [
 	[
 		'type' => 'iconrepeater',
 		'name' => 'super_mobile_settings[icons-left]',
-		'label' => 'Choose your icons',
+		'label' => 'Choose your left icons',
 	],
 	[
 		'type' => 'iconrepeater',
 		'name' => 'super_mobile_settings[icons-right]',
-		'label' => 'Choose your icons',
+		'label' => 'Choose your right icons',
 	],
 	[
 		'type' => 'section',
@@ -391,5 +391,20 @@ $SMMSUPEROPTIONS = [
 		'type' => 'section',
 		'label' => 'Import Template',
 		'id' => 'import-section',
+	],
+	[
+		'type' => 'text',
+		'label' => 'Activate to get more fancy templates<br><small><a href="#">get activation code</a></small>',
+		'name' => 'super_mobile_settings[activation-code]',
+	],
+	[
+		'type' => 'text',
+		'label' => 'Set google Api key for your font picker<br><small><a target="_blank" href="https://developers.google.com/fonts/docs/developer_api#APIKey">get api key</a></small>',
+		'name' => 'super_mobile_settings[google-api]',
+	],
+	[
+		'type' => 'section',
+		'label' => 'Api and Actication',
+		'id' => 'api-section',
 	],
 ];
