@@ -35,10 +35,6 @@ $super_mobile_menu_settings = get_option('super_mobile_settings');
 		</div><!-- /row -->
 	</div><!-- /smm-container -->
 	<?php
-/*=====================================================================================
-*DEFAULT FORM SETTINGS in this file u can manage types fields for default settings
-=====================================================================================*/
-include(SMM_PLUGIN_PATH . 'inc/options/default-settings.php');
 wp_enqueue_media();
 wp_enqueue_script('smm-iconpicker-js');
 wp_enqueue_script('smm-switcher-js');
@@ -54,7 +50,7 @@ wp_enqueue_script('smm-tabs-js');
 		$('.submit-default').click(function(e){
 			e.preventDefault();
 			if (window.confirm("Do you really want to return to default settings?")) { 
-				$('#default-settings #submit').trigger('click');
+				self.window.location = '<?php echo admin_url('admin-ajax.php?action=import&option=default') ?>';
 			}
 		});
 		$('#submit').click(function(){

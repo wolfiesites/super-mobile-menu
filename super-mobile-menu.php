@@ -27,6 +27,7 @@ Class Super_mobile_menu {
 		add_action('wp_enqueue_scripts', [ $this, 'smm_front_enqueue_scripts'] );
 		add_action ('admin_menu', [ $this, 'smm_add_menu_pages' ]);
 		add_action('wp_footer', [ $this, 'smm_add_menu' ]);
+		add_action('wp_ajax_import', [ $this, 'smm_import' ]);
 	}
 	public function smm_admin_enqueue_scripts() {
 		wp_enqueue_script(PLUGIN_PREFIX . '-image-picker', plugin_dir_url(__FILE__) . '/assets/admin/js/media-upload-button.js', array(), false, true );
@@ -50,6 +51,7 @@ Class Super_mobile_menu {
 
 	public function smm_front_enqueue_scripts() {
 		wp_enqueue_style(PLUGIN_PREFIX . '-hamburger-css', plugin_dir_url(__FILE__) . '/assets/admin/css/hamburgers.min.css' );
+		wp_enqueue_style(PLUGIN_PREFIX . '-animate-css', plugin_dir_url(__FILE__) . '/assets/front/css/animate.min.css' );
 	}
 
 	public function smm_add_menu_pages(){
@@ -76,6 +78,9 @@ Class Super_mobile_menu {
 //add template on front-end
 	public function smm_add_menu(){ 
 		include(plugin_dir_path( __FILE__ ) . '/inc/templates/front/mobile_menu.php');
+	}
+	public function smm_import(){
+		include(SMM_PLUGIN_PATH . '/inc/import/settings.php');
 	}	
 }
 new Super_mobile_menu;

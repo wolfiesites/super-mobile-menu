@@ -286,6 +286,24 @@ $SMMSUPEROPTIONS = [
 		'default' => 'hamburger--3dx',
 	],
 	[
+		'type' => 'color',
+		'label' => 'Choose color for hamburger lines',
+		'name' => 'super_mobile_settings[hamburger-lines-color]',
+		'default' => 'black',
+	],
+	[
+		'type' => 'text',
+		'label' => 'Set thicknes for hamburger lines<br><small>pick number without unit [px]</small>',
+		'name' => 'super_mobile_settings[hamburger-lines-thickness]',
+		'default' => '2px',
+	],
+	[
+		'type' => 'color',
+		'label' => 'Choose background color for hamburger box',
+		'name' => 'super_mobile_settings[hamburger-box-bg-color]',
+		'default' => 'lightgrey',
+	],
+	[
 		'type' => 'section',
 		'label' => 'Hamburger',
 		'id' => 'hamburger-section',
@@ -404,7 +422,7 @@ $SMMSUPEROPTIONS = [
 	],
 	[
 		'type' => 'section',
-		'label' => 'Api and Actication',
+		'label' => 'Api and Activation',
 		'id' => 'api-section',
 	],
 ];

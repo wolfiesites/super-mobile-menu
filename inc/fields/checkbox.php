@@ -5,8 +5,8 @@ if($superoption['type'] == 'checkbox') {
 	echo '<td>';
 	echo '<div class="smm-option-wrapper checkbox">';
 	$just_name = get_between($superoption['name'], "[", "]");
-	$switch_off = !isset($super_mobile_menu_settings[$just_name]);
-	if($switch_off) { ?>
+	$switch_off = $super_mobile_menu_settings[$just_name];
+	if($switch_off === 'off') { ?>
 		<label class="switch">
 			<input type="checkbox" name="<?php echo $superoption['name'] ?>">
 			<span class="slider round"></span>
