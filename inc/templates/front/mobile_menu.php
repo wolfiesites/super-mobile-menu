@@ -44,6 +44,9 @@ if(is_user_logged_in()) {
 }
 ?>
 <style type="text/css">
+	body {
+		background: orange;
+	}
 	#super-mobile-menu {
 		display: none;
 	}
@@ -59,6 +62,9 @@ if(is_user_logged_in()) {
 	}
 	.smm-overlay {
 		display: none;
+	}
+	.smm-hamburger-wrapper, .smm-hamburger button {
+		outline: none !important;
 	}
 	@media screen and (max-width: <?php echo $breakpoint ?>px) {
 		<?php

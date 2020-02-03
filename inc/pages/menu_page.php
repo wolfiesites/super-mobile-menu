@@ -2,6 +2,7 @@
 global $SMMSUPEROPTIONS;
 wp_enqueue_style('smm-options-css');
 wp_enqueue_script('smm-helpers-js');
+wp_enqueue_script('wp-colorpicker-js');
 $super_mobile_menu_settings = get_option('super_mobile_settings');
 ?>
 <!-- //add font awesome -->
