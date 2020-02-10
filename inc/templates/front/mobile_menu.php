@@ -6,14 +6,14 @@ $smm_logo = $smm_options['general-logo'];
 $smm_menu_bar_color = $smm_options['general-menu-bar-color'];
 $smm_menu_container_color = $smm_options['general-menu-container-color'];
 $smm_overlay_color = $smm_options['general-overlay-color'];
-$smm_icon_parent = $smm_otion['general-icon-parent'];
+$smm_icon_parent = $smm_options['general-icon-parent'];
 $smm_sticky_on = $smm_options['sticky'];
 $smm_sticky_logo = $smm_options['sticky-logo'];
-$topbar_display = $smm_otions['topbar-display'];
+$topbar_display = $smm_options['topbar-display'];
 $topbar_layout = $smm_options['topbar-layout'];
 $topbar_menu = $smm_options['topbar-menu'];
 $topbar_color = $smm_options['topbar-backgroundcolor'];
-$topbar_text = $smm_options['topbar=text'];
+$topbar_text = $smm_options['topbar-text'];
 $mainbar_layout = $smm_options['mainbar-layout'];
 $container_language = $smm_options['container-language'];
 $container_layout = $smm_options['container-layout'];
@@ -44,6 +44,9 @@ if(is_user_logged_in()) {
 }
 ?>
 <style type="text/css">
+	body {
+		background: indigo;
+	}
 	#super-mobile-menu {
 		display: none;
 	}
@@ -62,6 +65,10 @@ if(is_user_logged_in()) {
 	}
 	.smm-hamburger-wrapper, .smm-hamburger button {
 		outline: none !important;
+	}
+	.smm-hamburger button {
+		background: <?php echo $hamburger_box_bg_color ?> !important;
+		border: none !important;
 	}
 	@media screen and (max-width: <?php echo $breakpoint ?>px) {
 		<?php

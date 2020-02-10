@@ -32,6 +32,7 @@ Class Super_mobile_menu {
 	public function smm_admin_enqueue_scripts() {
 		wp_enqueue_script(PLUGIN_PREFIX . '-image-picker', plugin_dir_url(__FILE__) . '/assets/admin/js/media-upload-button.js', array(), false, true );
 		wp_register_script(PLUGIN_PREFIX . '-iconpicker-js', plugin_dir_url(__FILE__) . '/assets/admin/js/jquery.fonticonpicker.min.js', array('jquery'), false, true );
+		wp_register_script(PLUGIN_PREFIX . '-iconpicker-alpha-js', plugin_dir_url(__FILE__) . '/assets/admin/js/wp-color-picker-alpha.min.js', array('jquery', 'smm-iconpicker-js'), false, true );
 		wp_register_script(PLUGIN_PREFIX . '-tabs-js', plugin_dir_url(__FILE__) . '/assets/admin/js/tabs.js', array('jquery'), false, true );
 		wp_register_script(PLUGIN_PREFIX . '-helpers-js', plugin_dir_url(__FILE__) . '/assets/admin/js/helpers.js', array('jquery'), false, false );
 		wp_register_script(PLUGIN_PREFIX . '-switcher-js', plugin_dir_url(__FILE__) . '/assets/admin/js/switcher.js', array('jquery'), false, true );
