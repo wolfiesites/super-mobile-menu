@@ -44,9 +44,6 @@ if(is_user_logged_in()) {
 }
 ?>
 <style type="text/css">
-	body {
-		background: orange;
-	}
 	#super-mobile-menu {
 		display: none;
 	}
@@ -164,12 +161,11 @@ if(is_user_logged_in()) {
 </div><!-- /super-mobile-menu -->
 <div id="super-mobile-menu-container" class="smm-menu-container hidden">
 	<?php
-	$menus = wp_get_nav_menu_items( $smm_main_menu );
-	// echo '<pre>';
-	// print_r( $menu );
-	// echo '</pre>';
-	foreach ($menus as $menu => $item) {
-		echo $item->title . '<br>';
+	// $menus = wp_get_nav_menu_items( $smm_main_menu );
+	if (!empty($menus)) {
+		foreach ($menus as $menu => $item) {
+			echo $item->title . '<br>';
+		}
 	}
 	?>
 	<!-- <ul>
