@@ -58,6 +58,7 @@ if(is_user_logged_in()) {
 		display: none;
 	}
 	#super-mobile-menu-container {
+		display: none;
 		width:80%;
 		height: 100vh;
 		overflow-y: scroll;
@@ -116,6 +117,9 @@ if(is_user_logged_in()) {
 			height: 100vh;
 			display: block;
 			top: <?php echo $topGapHeight ?>;
+		}
+		#super-mobile-menu-container {
+			display: block;
 		}
 		#super-mobile-menu {
 			display: block;
