@@ -46,6 +46,13 @@ if(is_user_logged_in()) {
 <style type="text/css">
 	body {
 		background: indigo;
+		color: white;
+	}
+	body.noscroll {
+		overflow-y: hidden;
+	}
+	#content {
+		height: 200vh;
 	}
 	#super-mobile-menu {
 		display: none;
@@ -53,9 +60,16 @@ if(is_user_logged_in()) {
 	#super-mobile-menu-container {
 		width:80%;
 		height: 100vh;
+		overflow-y: scroll;
 		background: lightgrey;
 		position: absolute;
 		top: <?php echo $topGapHeight ?>;
+	}
+	#super-mobile-menu-container {
+		color: black;
+	}
+	#super-mobile-menu-container li {
+		color: black;
 	}
 	.smm-menu-container {
 		z-index: 998;
@@ -70,6 +84,10 @@ if(is_user_logged_in()) {
 		background: <?php echo $hamburger_box_bg_color ?> !important;
 		border: none !important;
 	}
+	#super-mobile-menu .hamburger-inner, #super-mobile-menu .hamburger-inner:before, #super-mobile-menu .hamburger-inner:after {
+		background: <?php echo $hamburger_lines_color ?>;
+	}
+	/*add here css from front/css/style.css*/
 	@media screen and (max-width: <?php echo $breakpoint ?>px) {
 		<?php
 		if(is_user_logged_in()) { ?>
@@ -131,7 +149,7 @@ if(is_user_logged_in()) {
 			visibility: visible;
 			pointer-events:initial;
 		}
-		.hidden {
+		.smm-hidden {
 			visibility: hidden;
 			pointer-events:none;
 		}
@@ -166,39 +184,32 @@ if(is_user_logged_in()) {
 		</div><!-- /smm-container -->
 	</div><!-- /smm-mainbar -->
 </div><!-- /super-mobile-menu -->
-<div id="super-mobile-menu-container" class="smm-menu-container hidden">
+<div id="super-mobile-menu-container" class="smm-menu-container smm-hidden">
 	<?php
-	// $menus = wp_get_nav_menu_items( $smm_main_menu );
-	if (!empty($menus)) {
-		foreach ($menus as $menu => $item) {
-			echo $item->title . '<br>';
-		}
+	$icon = '<i class="' . $smm_icon_parent . '" aria-hidden="true"></i>';
+	$menu = wp_nav_menu( [ 
+		'menu' => $smm_main_menu,
+		'after' => $icon,
+	] );
+	if (!empty($menu)) {
+		echo $menu;
 	}
 	?>
-	<!-- <ul>
-		<li><a href="#">home</a></li>
-		<li><a href="#">about</a></li>
-		<li><a href="#">offer</a></li>
-		<ul>
-			<li><a href="#">offer 1</a></li>
-			<li><a href="#">offer 2</a></li>
-			<li><a href="#">offer 3</a></li>
-			<li><a href="#">offer 4</a></li>
-		</ul>
-	</ul> -->
 </div><!-- /super-mobile-menu-container -->
-<div class="smm-overlay hidden"></div><!-- /smm-overlay -->
+<div class="smm-overlay smm-hidden"></div><!-- /smm-overlay -->
 <script type="text/javascript">
 	jQuery(document).ready(function($){ 
 		var ww = $(window).width();
 		var hamburger = $('.smm-hamburger button');
 		var mobileContainer = $('#super-mobile-menu-container');
 		var mobileOverlay = $('.smm-overlay');
+		var icon = $('#super-mobile-menu-container  li > i');
+		var menu_item_height = $('#super-mobile-menu-container li a').outerHeight();
 		function showEl(element){
 			$(element).addClass('visible');
 		}
 		function hideEl(element){
-			$(element).addClass('hidden');
+			$(element).addClass('smm-hidden');
 		}
 		function animateCSS(element, animationName, speed, callback) {
 			if(element instanceof jQuery) {
@@ -209,7 +220,7 @@ if(is_user_logged_in()) {
 				var element = '.'+className;
 			}
 			const node = document.querySelector(element);
-			node.classList.remove('hidden', 'visible');
+			node.classList.remove('smm-hidden', 'visible');
 			node.classList.add('animated', animationName, speed);
 			function handleAnimationEnd() {
 				node.classList.remove('animated', animationName, speed)
@@ -233,10 +244,12 @@ if(is_user_logged_in()) {
 	function openMenuContainer(){
 		animateCSS(mobileOverlay, 'fadeIn', 'faster', showEl);
 		animateCSS(mobileContainer, 'slideInLeft', 'faster', showEl);
+		$('body').addClass('noscroll');
 	}
 	function closeMenuContainer(){
 		animateCSS(mobileOverlay, 'fadeOut', 'faster', hideEl);
 		animateCSS(mobileContainer, 'slideOutLeft', 'faster', hideEl);
+		$('body').removeClass('noscroll');
 	}
 	togglePlaceholder();
 		//add event listeners
@@ -248,9 +261,17 @@ if(is_user_logged_in()) {
 				closeMenuContainer();
 			}
 		});
+		icon.click(function(e){
+			e.preventDefault();
+			$(this).siblings('ul').slideToggle(200);
+			$(this).toggleClass('rotate');
+		});
+		$('.current-menu-item').parent().addClass('active');
 		mobileOverlay.click(function(){
 			hamburger.trigger('click');
 		});
+		console.log(menu_item_height);
+		icon.css('height', menu_item_height + 'px');
 		//trigger functions on window resize
 		$(window).resize(function(){
 			togglePlaceholder();

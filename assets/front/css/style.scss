@@ -1,0 +1,57 @@
+#super-mobile-menu-container {
+li:not(.menu-item-has-children) > i {
+	display: none;
+}
+li > i {
+	width: 20%;
+	position: absolute;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.2s;
+	cursor: pointer;
+	font-size: 30px;
+}
+li > i.rotate {
+	transform: rotate(90deg);
+}
+ul.menu {
+	margin: 0px;
+	padding: 0px;
+}
+.menu li {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.menu li ul.sub-menu {
+	width: 100% !important;
+	display: none;
+}
+.menu li ul.sub-menu.active {
+	display: block;
+}
+.menu li ul {
+	padding:0px;
+	margin:0px;
+}
+.menu li a {
+	font-size: 30px;
+	display: block;
+	width: 100%;
+	padding: 8px 20px;
+	background: white;
+	border-bottom: 1px solid black;
+	text-decoration: none;
+	color: black;
+}
+.menu li ul.sub-menu a {
+	background: lightgrey;
+}
+.current-menu-item > a {
+	background: orange !important;
+	color: white !important;
+}
+}

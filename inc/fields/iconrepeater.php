@@ -14,7 +14,9 @@ if($superoption['type'] == 'iconrepeater') {
 					</textarea>
 					<?php
 					$name = $superoption['name'];
-					$option = $superoption['option'];
+					if(isset($superoption['option'])){
+						$option = $superoption['option'];
+					}
 					$value =  $super_mobile_menu_settings[$just_name];
 					$value = json_decode($value);
 					$count = 0;

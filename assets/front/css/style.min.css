@@ -1,0 +1,11 @@
+#super-mobile-menu-container li:not(.menu-item-has-children)>i{display:none}
+#super-mobile-menu-container li>i{width:20%;position:absolute;right:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-transition:-webkit-transform .2s;transition:-webkit-transform .2s;transition:transform .2s;transition:transform .2s,-webkit-transform .2s;cursor:pointer;font-size:30px}
+#super-mobile-menu-container li>i.rotate{-webkit-transform:rotate(90deg);transform:rotate(90deg)}
+#super-mobile-menu-container ul.menu{margin:0;padding:0}
+#super-mobile-menu-container .menu li{position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+#super-mobile-menu-container .menu li ul.sub-menu{width:100% !important;display:none}
+#super-mobile-menu-container .menu li ul.sub-menu.active{display:block}
+#super-mobile-menu-container .menu li ul{padding:0;margin:0}
+#super-mobile-menu-container .menu li a{font-size:30px;display:block;width:100%;padding:8px 20px;background:white;border-bottom:1px solid black;text-decoration:none;color:black}
+#super-mobile-menu-container .menu li ul.sub-menu a{background:lightgrey}
+#super-mobile-menu-container .current-menu-item>a{background:orange !important;color:white !important}

@@ -53,6 +53,7 @@ Class Super_mobile_menu {
 	public function smm_front_enqueue_scripts() {
 		wp_enqueue_style(PLUGIN_PREFIX . '-hamburger-css', plugin_dir_url(__FILE__) . '/assets/admin/css/hamburgers.min.css' );
 		wp_enqueue_style(PLUGIN_PREFIX . '-animate-css', plugin_dir_url(__FILE__) . '/assets/front/css/animate.min.css' );
+		wp_enqueue_style(PLUGIN_PREFIX . '-front-css', plugin_dir_url(__FILE__) . '/assets/front/css/style.css' );
 	}
 
 	public function smm_add_menu_pages(){
