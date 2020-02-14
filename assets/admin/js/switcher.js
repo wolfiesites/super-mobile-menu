@@ -3,10 +3,11 @@ jQuery(document).ready(function($){
 		e.preventDefault();
 		if( $(this).hasClass( 'active' ) ) {
 			$(this).removeClass('active');
-			$(this).find('input').removeAttr( 'checked' );
+			$(this).find('input').val('off');
 		} else {
 			$(this).addClass('active');
 			$(this).find('input').attr('checked', true);
+			$(this).find('input').val('on');
 		}
 	});
 	$('body .conditional').on('click', '.switch', function(e){

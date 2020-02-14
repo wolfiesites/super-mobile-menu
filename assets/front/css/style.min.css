@@ -9,3 +9,6 @@
 #super-mobile-menu-container .menu li a{font-size:30px;display:block;width:100%;padding:8px 20px;background:white;border-bottom:1px solid black;text-decoration:none;color:black}
 #super-mobile-menu-container .menu li ul.sub-menu a{background:lightgrey}
 #super-mobile-menu-container .current-menu-item>a{background:orange !important;color:white !important}
+.smm-mainbar{width:100%}
+.smm-mainbar>.smm-container{width:100%;background:pink}
+.sticky-active{position:fixed !important}

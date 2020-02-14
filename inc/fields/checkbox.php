@@ -1,4 +1,10 @@
 <?php
+
+// $smm_options = get_option('super_mobile_settings', false);
+// echo '<pre>';
+// print_r( $smm_options );
+// echo '</pre>';
+
 if($superoption['type'] == 'checkbox') {
 	echo '<tr valign="top">';
 	echo '<th scope="row">' . $superoption['label'] . '</th>';

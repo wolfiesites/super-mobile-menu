@@ -63,7 +63,7 @@ if(is_user_logged_in()) {
 		height: 100vh;
 		overflow-y: scroll;
 		background: lightgrey;
-		position: absolute;
+		position: fixed;
 		top: <?php echo $topGapHeight ?>;
 	}
 	#super-mobile-menu-container {
@@ -112,7 +112,7 @@ if(is_user_logged_in()) {
 		.smm-overlay {
 			background: rgba(0,0,0,0.8);
 			pointer-events:none;
-			position: absolute;
+			position: fixed;
 			width: 100%;
 			height: 100vh;
 			display: block;
@@ -128,7 +128,6 @@ if(is_user_logged_in()) {
 			top: 0;
 			left: 0;
 			height: 100px;
-			background: green;
 			z-index: 995;
 		}
 		.smm-logo-wrapper img {
@@ -159,13 +158,16 @@ if(is_user_logged_in()) {
 		}
 	}
 </style>
+<?php 
+$sticky_class = ($smm_sticky_on === 'on') ? ' sticky' : $sticky_class = '' ;
+?>
 <div id="super-mobile-menu" class="super-mobile-menu">
 	<div class="smm-topbar">
 		<div class="smm-container">
 
 		</div>
 	</div><!-- /smm-topbar -->
-	<div class="smm-mainbar">
+	<div class="smm-mainbar<?php echo $sticky_class ?>">
 		<div class="smm-container">
 			<div class="smm-row smm-align-center">
 				<div class="smm-logo-wrapper">
@@ -280,5 +282,28 @@ if(is_user_logged_in()) {
 		$(window).resize(function(){
 			togglePlaceholder();
 		});
+
+		// sticky
+		var isSticky = false;
+		window.addEventListener('scroll', function(e) {
+			var mainWrap = $('.sticky');
+			var mainWrapTop = mainWrap.offset().top;
+			var windowTopScrollPosition = window.scrollY;
+			if(mainWrapTop < windowTopScrollPosition ) {
+				if(!isSticky) {
+					mainWrap.children().addClass('sticky-active');
+					console.log('JESTEM sticky!');
+					isSticky = true;
+				}
+			} else {
+				if(isSticky) {
+					mainWrap.children().removeClass('sticky-active');
+					console.log('NIE JESTEM sticky!');
+					isSticky = false;
+				}
+
+			}
+		});
+
 	});
 </script>

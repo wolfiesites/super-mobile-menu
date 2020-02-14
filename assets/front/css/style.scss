@@ -55,3 +55,13 @@ ul.menu {
 	color: white !important;
 }
 }
+.smm-mainbar {
+	width: 100%;
+	& > .smm-container {
+		width: 100%;
+		background: pink;
+	}
+}
+.sticky-active {
+	position: fixed !important;
+}
