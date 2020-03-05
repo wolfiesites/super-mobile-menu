@@ -44,15 +44,8 @@ if(is_user_logged_in()) {
 }
 ?>
 <style type="text/css">
-	body {
-		background: indigo;
-		color: white;
-	}
 	body.noscroll {
 		overflow-y: hidden;
-	}
-	#content {
-		height: 200vh;
 	}
 	#super-mobile-menu {
 		display: none;
