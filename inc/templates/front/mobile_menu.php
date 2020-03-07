@@ -81,6 +81,9 @@ if(is_user_logged_in()) {
 	#super-mobile-menu .hamburger-inner, #super-mobile-menu .hamburger-inner:before, #super-mobile-menu .hamburger-inner:after {
 		background: <?php echo $hamburger_lines_color ?>;
 	}
+	.smm-mainbar > .smm-container {
+	background:	<?php echo $smm_menu_bar_color ?>!important;
+	}
 	/*add here css from front/css/style.css*/
 	@media screen and (max-width: <?php echo $breakpoint ?>px) {
 		<?php
