@@ -1,0 +1,14 @@
+{
+    "name": "wolfiesites/super-mobile-menu",
+    "description": "it adds responsive menu to wordpress",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Pawel Witek",
+            "email": "pawel.witek@wolfiesites.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
