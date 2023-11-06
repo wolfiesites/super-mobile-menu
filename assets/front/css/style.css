@@ -26,3 +26,4 @@
 
 .sticky-active { position: fixed !important; }
 
+#super-mobile-menu-container {overflow: auto; }
