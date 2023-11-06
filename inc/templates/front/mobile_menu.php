@@ -35,8 +35,12 @@ $typography_fonttype = $smm_options['typography-fonttype'];
 $hide_desktop_menu = $smm_options['hide-desktop-menu'];
 $breakpoint = $smm_options['breakpoint'];
 // get logo
-$logo = wp_get_attachment_image( $smm_logo, 'medium', false );
-$sticky_logo = wp_get_attachment_image( $smm_sticky_logo, 'medium', false );
+$logo = wp_get_attachment_image( $smm_logo, 'medium', false, ['class'=> 'nolazy'] );
+$sticky_logo = wp_get_attachment_image( $smm_sticky_logo, 'medium', false, ['class'=> 'nolazy'] );
+
+
+
+
 if(is_user_logged_in()) {
 	$topGapHeight = '46px';
 } else {
@@ -44,27 +48,22 @@ if(is_user_logged_in()) {
 }
 ?>
 <style type="text/css">
-	body {
-		background: indigo;
-		color: white;
-	}
 	body.noscroll {
 		overflow-y: hidden;
-	}
-	#content {
-		height: 200vh;
 	}
 	#super-mobile-menu {
 		display: none;
 	}
 	#super-mobile-menu-container {
+		padding-top: 140px;
 		display: none;
-		width:80%;
+		width:100%;
 		height: 100vh;
 		overflow-y: scroll;
-		background: lightgrey;
+		background: <?php echo $smm_menu_container_color ?>;
 		position: fixed;
-		top: <?php echo $topGapHeight ?>;
+		top: calc( 0px + <?php echo $topGapHeight ?> );
+		z-index: 10;
 	}
 	#super-mobile-menu-container {
 		color: black;
@@ -82,6 +81,7 @@ if(is_user_logged_in()) {
 		outline: none !important;
 	}
 	.smm-hamburger button {
+		background: transparent !important;
 		background: <?php echo $hamburger_box_bg_color ?> !important;
 		border: none !important;
 	}
@@ -97,6 +97,8 @@ if(is_user_logged_in()) {
 			}
 			#super-mobile-menu  {
 				top: 46px !important;
+				position: relative;
+				z-index: 20;
 			}
 			.smm-menu-placeholder {
 				padding-top: 46px !important;
@@ -130,6 +132,10 @@ if(is_user_logged_in()) {
 			height: 100px;
 			z-index: 995;
 		}
+		.smm-logo-wrapper {
+			display: flex;
+			justify-content: center;
+		}
 		.smm-logo-wrapper img {
 			max-height: 100px;
 			width: auto;
@@ -156,6 +162,44 @@ if(is_user_logged_in()) {
 			visibility: hidden;
 			pointer-events:none;
 		}
+		.smm-justify-between {
+			justify-content: space-between;
+		}
+		.d-none {
+			display: none;
+		}
+		.main-row > div {
+			width: 33% !important;
+		}
+		.main-row > div svg {
+			width: 100% !important;
+		}
+		.main-row .social-icons-wrapper a {
+			margin-right: 2px !important;
+		}
+		.main-row .social-icons-wrapper {
+			justify-content: flex-end;
+		}
+		#super-mobile-menu-container .menu li a {
+			text-align: center;
+			border:none !important;
+			padding: 20px !important;
+		}
+		#super-mobile-menu-container .wpml-ls {
+			display: flex;
+			justify-content: center;
+			height: 60px;
+			padding: 20px 0px !important;
+			align-items: center;
+			box-sizing: content-box !important;
+		}
+		#super-mobile-menu-container .wpml-ls a, .wpml-ls li:after {
+			font-size: 30px;
+			color: black !important;
+		}
+		#super-mobile-menu-container .wpml-ls li:after {
+			right: -5px;
+		}
 	}
 </style>
 <?php 
@@ -168,16 +212,9 @@ $sticky_class = ($smm_sticky_on === 'on') ? ' sticky' : $sticky_class = '' ;
 		</div>
 	</div><!-- /smm-topbar -->
 	<div class="smm-mainbar<?php echo $sticky_class ?>">
-		<div class="smm-container">
-			<div class="smm-row smm-align-center">
-				<div class="smm-logo-wrapper">
-					<a href="<?php echo site_url('/') ?>">
-						<?php echo $logo ?>
-					</a>
-				</div><!-- /smm-logo-wrapper -->
-				<div class="smm-language-wrapper">
-				</div><!-- /smm-language-wrapper -->
-				<div class="smm-hamburger-wrapper smm-push-right">
+		<div class="smm-container" style="background:<?php echo $smm_menu_bar_color ?>;">
+			<div class="smm-row smm-align-center smm-justify-between main-row">
+				<div class="smm-hamburger-wrapper">
 					<div class="smm-hamburger">
 						<button class="<?php echo $hamburger ?>" type="button">
 							<span class="hamburger-box">
@@ -186,21 +223,45 @@ $sticky_class = ($smm_sticky_on === 'on') ? ' sticky' : $sticky_class = '' ;
 						</button>
 					</div><!-- /smm-hamburger -->
 				</div><!-- /smm-hamburger-wrapper -->
+				<div class="smm-logo-wrapper">
+					<a href="<?php echo site_url('/') ?>">
+						<img class="nolazy" src="https://morelewska.com/wp-content/uploads/2020/10/logo-morelewska.svg">
+						<!-- <?php echo $logo ?> -->
+					</a>
+				</div><!-- /smm-logo-wrapper -->
+				<div class="smm-socia-wrapper">
+					<?php echo do_shortcode('[social-icons]'); ?>
+				</div><!-- /smm-socia-wrapper -->
+				<div class="smm-language-wrapper d-none">
+				</div><!-- /smm-language-wrapper -->
+				
 			</div><!-- /smm-row -->
 		</div><!-- /smm-container -->
 	</div><!-- /smm-mainbar -->
 </div><!-- /super-mobile-menu -->
 <div id="super-mobile-menu-container" class="smm-menu-container smm-hidden">
-	<?php
-	$icon = '<i class="' . $smm_icon_parent . '" aria-hidden="true"></i>';
-	$menu = wp_nav_menu( [ 
-		'menu' => $smm_main_menu,
-		'after' => $icon,
-	] );
-	if (!empty($menu)) {
-		echo $menu;
-	}
-	?>
+	<div class="wrapper">
+		<div class="container-top-section">
+
+			<div class='language-wrapper'>
+				<?php dynamic_sidebar('sidebar-666'); ?>
+			</div>
+		</div>
+		<?php
+		$icon = '<i class="' . $smm_icon_parent . '" aria-hidden="true"></i>';
+		$menu = wp_nav_menu( [ 
+			'menu' => $smm_main_menu,
+			'after' => $icon,
+		] );
+		if (!empty($menu)) {
+			echo $menu;
+		}
+
+		?>
+		<div class="social-wrapper">
+			<?php echo do_shortcode('[social-icons]'); ?>
+		</div>
+	</div>
 </div><!-- /super-mobile-menu-container -->
 <div class="smm-overlay smm-hidden"></div><!-- /smm-overlay -->
 <script type="text/javascript">
@@ -211,6 +272,24 @@ $sticky_class = ($smm_sticky_on === 'on') ? ' sticky' : $sticky_class = '' ;
 		var mobileOverlay = $('.smm-overlay');
 		var icon = $('#super-mobile-menu-container  li > i');
 		var menu_item_height = $('#super-mobile-menu-container li a').outerHeight();
+
+		const observer = new MutationObserver((mutations) => { 
+			mutations.forEach((mutation) => {
+				const el = mutation.target;
+				// console.log(mutation.addedNodes[0].classList[2]);
+				togglePlaceholder();
+				observer.disconnect();
+			});
+		});
+		var observedElement = document.querySelectorAll('.smm-logo-wrapper')[0];
+		if (observedElement) {
+			observer.observe(observedElement, { 
+				attributes: true, 
+				attributeOldValue: true, 
+				childList: true,
+				subtree: true,
+			});
+		}
 		function showEl(element){
 			$(element).addClass('visible');
 		}
@@ -239,6 +318,8 @@ $sticky_class = ($smm_sticky_on === 'on') ? ' sticky' : $sticky_class = '' ;
 		var ww = $(window).width();
 		if(ww < <?php echo $breakpoint ?>) {
 			if($('.smm-menu-placeholder').length) {
+				var mainMenuBarHeight = $('#super-mobile-menu').height();
+				$('.smm-menu-placeholder').css('height', mainMenuBarHeight);
 			} else {
 				var mainMenuBarHeight = $('#super-mobile-menu').height();
 				$('<div class="smm-menu-placeholder" style="height:'+mainMenuBarHeight+'px;"><div>').prependTo('body');
@@ -249,15 +330,16 @@ $sticky_class = ($smm_sticky_on === 'on') ? ' sticky' : $sticky_class = '' ;
 	}
 	function openMenuContainer(){
 		animateCSS(mobileOverlay, 'fadeIn', 'faster', showEl);
-		animateCSS(mobileContainer, 'slideInLeft', 'faster', showEl);
+		animateCSS(mobileContainer, 'fadeIn', 'faster', showEl);
 		$('body').addClass('noscroll');
 	}
 	function closeMenuContainer(){
 		animateCSS(mobileOverlay, 'fadeOut', 'faster', hideEl);
-		animateCSS(mobileContainer, 'slideOutLeft', 'faster', hideEl);
+		animateCSS(mobileContainer, 'fadeOut', 'faster', hideEl);
 		$('body').removeClass('noscroll');
 	}
-	togglePlaceholder();
+
+
 		//add event listeners
 		hamburger.click(function(){
 			$(this).toggleClass('is-active');
@@ -276,7 +358,6 @@ $sticky_class = ($smm_sticky_on === 'on') ? ' sticky' : $sticky_class = '' ;
 		mobileOverlay.click(function(){
 			hamburger.trigger('click');
 		});
-		console.log(menu_item_height);
 		icon.css('height', menu_item_height + 'px');
 		//trigger functions on window resize
 		$(window).resize(function(){
@@ -292,13 +373,11 @@ $sticky_class = ($smm_sticky_on === 'on') ? ' sticky' : $sticky_class = '' ;
 			if(mainWrapTop < windowTopScrollPosition ) {
 				if(!isSticky) {
 					mainWrap.children().addClass('sticky-active');
-					console.log('JESTEM sticky!');
 					isSticky = true;
 				}
 			} else {
 				if(isSticky) {
 					mainWrap.children().removeClass('sticky-active');
-					console.log('NIE JESTEM sticky!');
 					isSticky = false;
 				}
 
